@@ -1,11 +1,23 @@
-options = document.getElementsByTagName('input')
-feedback = document.getElementsByClassName("feedback")
+let options = document.getElementsByTagName('input')
+let feedback = document.getElementsByClassName("feedback")
+
+let span = document.getElementById("prize")
+const prizes = [
+    "iPhone 15 Pro",
+    "Apple Watch Series 9",
+    "MacBook Air M2",
+    "AirPods Pro",
+    "PlayStation 5",
+]
+
+let prize = prizes[getRndInteger(0,4)]
+console.log(prize)
 
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
-randnum = getRndInteger(0,4)
+let randnum = getRndInteger(0,4)
 console.log(randnum)
 
 options[randnum].setAttribute("id", "correct")
@@ -18,9 +30,11 @@ for (const option of options) {
     option.addEventListener("click", function(){
         if(game0ver){return}
         game0ver = true
+        // option.disabled= true
         if (option.checked) {
             if (option === correct) {
                 option.parentElement.classList.replace("bg-blue-500", "bg-green-500")
+                span.innerText = prize
                 feedback[1].classList.remove("hidden")
             }
             else{
@@ -36,16 +50,3 @@ for (const option of options) {
 // for (const option of options) {
 //     option.disabled = true
 // }
-
-
-
-
-
-
-// options[0].parentElement.classList.replace("bg-blue-500", "bg-red-500");
-    // if (correct.checked) {
-    //     correct.parentElement.replace("bg-blue-500", "bg-green-500")
-    // }
-// options[0].parentElement.classList.replace("bg-blue-500", "bg-green-500");
-
-
